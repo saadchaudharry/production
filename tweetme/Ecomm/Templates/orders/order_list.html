@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}|ORDER {% endblock %}
+
+{% block body %}
+    <hr>
+    <h2><b>Cart</b></h2>
+    <table class="table table-bordered cart-table">
+        <thead>
+    <tr class="bg-warning">
+      <th scope="col">Order id</th>
+      <th scope="col">Shipping status</th>
+      <th scope="col">price</th>
+    </tr>
+  </thead>
+  <tbody style="color:#fff055">
+        {% for i in object_list %}
+            <tr>
+            <td>{{ i.order_id }}</td>
+            <td>{{ i.order_date }}</td>
+            <td>{{ i.total }}</td>
+            </tr>
+        {% endfor %}
+  </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}|LOGIN {% endblock %}
+{% load crispy_forms_tags %}
+{% block body %}
+
+<div class="container">
+        <h3>welcome to Ecomm</h3>
+        <form method="POST" class="col-sm-6">{% csrf_token %}
+
+             {{form.username|as_crispy_field}}<br>
+             {{form.email|as_crispy_field}}<br>
+             {{form.first_name|as_crispy_field}}<br>
+             {{form.last_name|as_crispy_field}}<br>
+             {{form.password1|as_crispy_field}}<br>
+             {{form.password2|as_crispy_field}}<br>
+            {{ form.is_staff }} agreed all the term and condtions<br>
+          <input class="btn btn-lg btn-warning btn-block" id="center" type="submit" value="Submit">
+        </form>
+      </div>
+{% endblock %}

@@ -1,0 +1,143 @@
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script >
+$(document).ready(function() {
+              // Auto Search
+              var searchForm = $(".search-form");
+              var searchInput = searchForm.find("[name='q']"); // input name='q'
+              var typingTimer;
+              var typingInterval = 500; // .5 seconds
+              var searchBtn = searchForm.find("[type='submit']");
+              searchInput.keyup(function(event){
+                // key released
+                clearTimeout(typingTimer);
+                typingTimer = setTimeout(perfomSearch, typingInterval)
+              });
+              searchInput.keydown(function(event){
+                // key pressed
+                clearTimeout(typingTimer)
+              });
+              function displaySearching(){
+                searchBtn.addClass("disabled");
+                searchBtn.html("<i class='fa fa-spin fa-spinner'></i> Searching...")
+              }
+              function perfomSearch(){
+                displaySearching()
+                var query = searchInput.val()
+                setTimeout(function(){
+                  window.location.href='/search/?q=' + query
+                }, 1000)
+              }
+
+
+
+
+{#  cart and add to cart   #}
+var previousScroll = 0;
+
+$(window).scroll(function(){
+   var currentScroll = $(this).scrollTop();
+   if (currentScroll > previousScroll ) {
+       //Direction: Down
+       $(".navbar").fadeOut();
+   } else {
+       //Direction: Up
+       $(".navbar").fadeIn();
+   }
+
+   previousScroll = currentScroll;
+
+   if (currentScroll == 0) {
+       $(".navbar").css("position", "relative");
+   } else {
+       $(".navbar").css("position", "fixed");
+   }
+});
+});
+</script >
+<script>
+$(document).ready(function () {
+    var cartForm = $(".add_cart_form");
+    cartForm.submit(function (event) {
+     event.preventDefault();
+     var $this =$(this);
+     var actionUrl=$this.attr('action');
+     var MethodForm=$this.attr("method");
+     var formData=$this.serialize();
+
+     $.ajax({
+         url:actionUrl,
+         method:MethodForm,
+         data:formData,
+         success:function(data) {
+             {#console.log(data);#}
+             var submitSpan = $this.find(".from_add");
+             if (data.added) {
+                 submitSpan.html("already in cart<button type=\"submit\" class=\"btn btn-link\">remove</button>")
+             } else {
+                 submitSpan.html("<button class=\"btn btn-warning\">add to cart</button>\n")
+             }
+             var cartCount = $(".cart_count");
+             cartCount.text(data.cartitem);
+
+             if (location.href.indexOf('cart') != 1) {
+                 cartrefresh()
+             }
+         },
+         error: function (xhr, msg) {
+            alert("Please cancel your proccesing order")
+         }
+      })
+    });
+
+
+    function cartrefresh() {
+        {#console.log("wooooo")#}
+        var cartTable=$('.cart-table');
+        var cartBody=cartTable.find('.cart-body');
+        {#cartBody.html('<h1>Changed</h1>');#}
+
+        var cartRow = cartBody.find(".cart-row");
+        var currentUrl =window.location.href;
+        {#refresh the ajax#}
+        var endpointurl = '/api/cart/';
+        var endpointmethod ="GET";
+        var data ={};
+        $.ajax({
+            url:endpointurl,
+            method:endpointmethod,
+            data:data,
+            success(data){
+                var cartRemoveFormButton =$(".remove-item");
+
+                if(data.products.length>0){
+                    cartRow.html(" ");
+                    i=data.products.length;
+                    $.each(data.products,function (index,value) {
+                        var cartRemoveClone = cartRemoveFormButton.clone();
+                        cartRemoveClone.css("display","block");
+                        cartRemoveClone.find(".cart_product_id").val(value.id);
+                        cartBody.prepend("<tr><th scope=\"row\">" + i + "</th><td><a href='" + value.url + "'>"+'<h5>' + value.title +'</h5>'+ "</a>" + cartRemoveClone.html() + "</td><td>" + value.price + "</td></tr>");
+                        i--
+                    });
+                     cartBody.find(".cart-subtotal").text(data.subtotal);
+                     cartBody.find(".cart-total").text(data.total)
+                } else{
+                    window.location.href = currentUrl
+                }
+            },
+            error(errorData){
+                console.log(errorData);
+            }
+
+        });
+
+    }
+
+
+})
+
+</script>
+{% block js %}
+{% endblock %}

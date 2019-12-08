@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %} |checkout{% endblock %}
+ {% block body %}
+     <h5 class="container">Order id={{ order_obj.order_id }}</h5>
+  {% if not order_obj.shipping_address %}
+     <div class="col-md-6 mx-auto">
+     <p class="lead"><h3>Shipping address</h3></p>
+         <hr>
+    {% url 'checkout_add' as checkout_add %}
+    {% include 'address/forms.html' with form=address_form address_type=shipping action_url=checkout_add %}
+{#     next_url=request.build_absolute_uri #}
+     </div>
+ {% else %}
+ <div class='row'>
+    <div class='col-12 col-md-6 mx-auto'>
+         <h1>Checkout</h1>
+          <hr/>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-12 col-md-6 mx-auto'>
+         <P>Order id={{ order_obj.order_id }}</P>
+         <P>contact no ={{ order_obj.shipping_address.contact_no }}</P>
+         <P>Item ={{ order_obj.shipping_address }}</P>
+         <p>Order = {{ order_obj.order_date }}</p>
+        {% for i in order_obj.prods.all %}
+         <p>products ={{ i }}</p>
+        {% endfor %}
+         <P>Cart Total={{ order_obj.cart.total }}</P>
+      <form action="{% url "cart:paytm" %}" method="POST" name="pay">{% csrf_token %}
+      <input type="hidden" name="id" value="{{ order_obj.order_id }}">
+      <input type="hidden" name="total" value="{{ order_obj.total }}">
+      <input type="hidden" name="email" value="{{ order_obj.billing_profile }}">
+      </form>
+      <script>document.pay.submit()</script>
+{% endif %}
+ </div>
+ </div>
+ {% endblock %}

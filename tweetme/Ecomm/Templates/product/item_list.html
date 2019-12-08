@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}|catagory{% endblock %}
+
+
+{% block body %}
+
+    {% include 'catagory.html' %}
+
+
+{#card#}
+  <div class="row p-0 m-0">
+      {% for i in object_list %}
+    <div class="card col-6 col-md-3 col-lg-4 rounded-0" style="background-color: #0f1617">
+            <img src="{{  i.image.url }}" class="card-img-top my-1"  >
+                <div class="card-body">
+                <a  style="color: #fff055"> <h5 class="card-title">{{ i.title }}</a></h5>
+              <p class="card-text d-none d-lg-block " style="color: #dbd8bd">{{ i.description }}</p>
+              <p class="card-text" style="color: #fff055"><span>&#8377;</span>-{{ i.price }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a  href='/{{ i.catagory }}/{{ i.slug }}/' type="button" class="btn btn-sm boton"><b>View detial</b></a>
+                </div>
+
+              </div>
+{#            </div>#}
+          </div>
+        </div>{% endfor %}
+
+  </div>
+<!-- </div> -->
+<!-- load more --><hr>
+{#<div class="text-center m-2">#}
+{#<button type="button" class="btn btn-dark"><h3>Load more.</h3></button>#}
+{#</div>#}
+
+
+
+{% endblock %}

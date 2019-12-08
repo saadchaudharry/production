@@ -1,0 +1,44 @@
+    <nav class="navbar navbar-expand-lg navbar-dark" id="nak" style="background-color: #232c2b;">
+  <a class="navbar-brand" style="color: #fff055" href="{% url 'Products:p-all' %}">My Pet Hub</a>
+
+
+
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse mr-1" id="navbarSupportedContent">
+
+
+        <form class="form-inline my-2 my-lg-0 search-form" method="get" action='{% url "search:query"  %}'>
+      <div class="input-group">
+      <input class="form-control " type="search" placeholder="Search" name="q" aria-label="Search">
+       <span class="input-group-btn">
+          <button class="btn btn-outline-light" type="submit" >Search</button>
+       </span>
+      </div>
+  </form>
+
+
+
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'cart:home' %}" style="color: #fff055"><img src="/media/cart.png" style="max-width:55px;max-height:20px"><span class="cart_count">{{ request.session.cart_item }}</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #ffe7d0">
+          Account
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="color: #fff055">
+          <a class="dropdown-item" href="{% url 'Login' %}">login</a>
+          <a class="dropdown-item" href="{% url 'LogoutView' %}">log out</a>
+          <a class="dropdown-item" href="{% url 'regester' %}">create account</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'order:list' %}">Order history/Track order</a>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+</nav>

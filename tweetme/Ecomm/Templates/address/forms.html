@@ -1,0 +1,19 @@
+{% load crispy_forms_tags %}
+{% block body %}
+<div class="form-group">
+<form method='POST' action='{{ action_url }}'>
+    {% csrf_token %}
+    {% if next_url %}
+    <input type='hidden' name='next' value='{{ next_url }}' />
+    {% endif %}
+{% if next_url %}
+    <input type='hidden' name='address_type' value='{{ address_type }}' />
+    {% endif %}
+    {{ form|crispy }}
+  <button type='submit' class='btn btn-warning'>Submit</button>
+</form><br>
+<form action="{% url 'cart:delete' %}" method='POST'>{% csrf_token %}
+    <button class="btn btn-warning ">cancel</button>
+</form>
+</div>
+{% endblock %}

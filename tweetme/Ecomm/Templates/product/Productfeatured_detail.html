@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}|Featured {% endblock %}
+
+{% block body %}
+{{ object.title }}<br>
+<img src="{{  object.image.url }}" style="max-height:250px;max-width: 250px"><br>
+{{ object.description }}
+    {% if user.is_authenticated %}
+    {% include "product/add-to-cart.html" with product=object cart=cart %}
+    {% endif %}
+ {% endblock %}

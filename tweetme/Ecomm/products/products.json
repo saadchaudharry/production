@@ -1,0 +1,110 @@
+[
+{
+    "model": "products.product",
+    "pk": 1,
+    "fields": {
+        "title": "coolpad",
+        "image": "productsimg/22_1.jpg",
+        "slug": "coolpad",
+        "description": "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+        "price": "223.25",
+        "catagory": "fish"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 2,
+    "fields": {
+        "title": "sevenday watch",
+        "image": "productsimg/7_ATP3vam.jpg",
+        "slug": "sevenday-watch",
+        "description": "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+        "price": "88.22",
+        "catagory": "dogs"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 3,
+    "fields": {
+        "title": "taguer watch",
+        "image": "productsimg/41.jpg",
+        "slug": "taguer-watch",
+        "description": "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+        "price": "66.33",
+        "catagory": "accessories"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 4,
+    "fields": {
+        "title": "java",
+        "image": "productsimg/30.jpg",
+        "slug": "java",
+        "description": "gcdvfaskbfvk d",
+        "price": "6562.52",
+        "catagory": "fish"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 5,
+    "fields": {
+        "title": "lakaa",
+        "image": "productsimg/9.jpg",
+        "slug": "lakaa",
+        "description": "hssdhifhvsdbfnjsdvfbjk",
+        "price": "63.22",
+        "catagory": "featured"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 6,
+    "fields": {
+        "title": "makoo",
+        "image": "productsimg/5_oobNdv3.jpg",
+        "slug": "makoo",
+        "description": "Django administratioWELCOME, SAAD. VIEW SITE",
+        "price": "54.55",
+        "catagory": "birds"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 7,
+    "fields": {
+        "title": "miew",
+        "image": "productsimg/21.jpg",
+        "slug": "miew",
+        "description": "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+        "price": "151.52",
+        "catagory": "cats"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 14,
+    "fields": {
+        "title": "persion cat",
+        "image": "productsimg/6_An5lgK9.png",
+        "slug": "persion-cat",
+        "description": "dfghj",
+        "price": "0.02",
+        "catagory": "cats"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 17,
+    "fields": {
+        "title": "jafar",
+        "image": "productsimg/34.jpg",
+        "slug": "jafar",
+        "description": "sdWELCOME, SAAD. VIEW SITE / CHANGE PASSWORD / LOG OUT\r\nHome \u203a Products \u203a Products \u203a Add produc",
+        "price": "0.01",
+        "catagory": "fish"
+    }
+}
+]

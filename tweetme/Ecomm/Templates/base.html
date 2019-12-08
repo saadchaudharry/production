@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Ecomm {% block title %} {% endblock %}</title>
+    {% include 'css.html' %}
+</head>
+<body style="background-color: #232c2b;color: #dbd8bd ;border-color:black">
+{% include "navbar.html" %}
+{% block body %}{% endblock %}
+</body>
+{% include "footer.html" %}
+{% include 'js.html' %}
+{% block js %}{% endblock %}
+</html>

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}|LOGIN {% endblock %}
+{% load crispy_forms_tags %}
+{% block body %}
+
+<form method="POST" class="form-signin col-md-6 mb-3">
+                {% csrf_token %}
+               {{ form }}
+          <input class="btn btn-lg btn-warning btn-block" id="center" type="submit" value="Logout">
+  </form>
+    <a href="{% url 'regester' %}">LOGIN</a>
+{% endblock %}

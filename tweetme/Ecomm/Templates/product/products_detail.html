@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}|detail {% endblock %}
+{% block body %}
+<div class="row container">
+    <div class="col-sm-3 col-xs-12">
+        <img src="{{  object.image.url }}" class="rounded float-left" style="max-height:250px;max-width: 250px">
+    </div>
+    <div class="col-sm-9">
+     {{ object.title }}<br>
+    {{ object.description }}
+    </div>
+<div class="col-12">
+{#    {% if cart.user.exists %}#}
+        {% if user.is_authenticated %}
+{% include "product/add-to-cart.html" with product=object cart=cart %}
+            {% else %}
+            <p class="info" >plzz log</p>
+        {% endif %}
+{#    {{ cart }}#}
+{#    {% if object in cart.products.all %}#}
+{#        In cart<button class="btn btn-link">remove</button>#}
+{#    {% else %}#}
+{#        <button class="btn btn-primary">add to cart</button>#}
+{#    {% endif %}#}
+</div>
+</div>
+{% endblock %}
